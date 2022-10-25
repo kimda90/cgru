@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@master
+      - name: Setting Git username and email
+        uses: fregante/setup-git-user@v1
       - name: Add Arubinu/Draco-CGRU git
         run:  git remote add draco https://github.com/Arubinu/Draco-CGRU.git
       - name: Fetch tags instead of objects
