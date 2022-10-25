@@ -13,3 +13,7 @@ jobs:
         run:  git merge draco/master --allow-unrelated-histories
       - name: Resolve conflicts favoring DRACO
         run:  git checkout --theirs -- *
+      - name: Git Auto Commit
+        # You may pin to the exact commit or the version.
+        # uses: stefanzweifel/git-auto-commit-action@2fde6fc18d3b24c2561ba4b73a8e015e863cef85
+        uses: stefanzweifel/git-auto-commit-action@v4.15.2
