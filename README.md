@@ -1,77 +1,20 @@
-## CGRU <img src="https://raw.githubusercontent.com/CGRU/cgru/master/favicon.ico" align="right" width="90">
+# Draco CGRU
 
-CGRU is the Computer Graphics Tools Pack.
+![Screenshot](/screenshot.png)
 
-It consists of the main tools _Afanasy_ and _Rules_.
-Other tools are arranged as satellites around these two,
-like _dailies encoding scripts_ and _software submission plug-ins_.
+## Installation
+* Install CGRU (http://cgru.info/installation).
+* Delete the folder ***/afanasy/browser*** containing the CGRU web interface.
+* Copy the folder 'browser' to the same location in CGRU.
 
-**Afanasy** is a render farm manager.
+## Compilation
+* Generate the general CSS file from the sources:
+`sass --update afanasy/browser/css/src/main.scss afanasy/browser/css/main.min.css --style compressed`
+* Generate the general JS file from the sources:
+`uglifyjs afanasy/browser/js/src/*.js afanasy/browser/js/src/interface/*.js afanasy/browser/js/src/nodes/*.js -c -m -o afanasy/browser/js/scripts.min.js --source-map`
 
-**Rules** is a Web based CG projects tracker.
-
-[Site](https://cgru.info)
-
-[Documentation](https://cgru.readthedocs.io)
-
-[Forum](https://forum.cgru.info)
-
-You can ask any questions on the CGRU forum.
-
-GitHub issues are used for code development and bug tracking.
-
-### Coding rules:
-
-- Indentation - TABS. You can vary tab length, default 4 spaces length is normal.
-	- Python Indentation - SPACES(4). It is not a problem to tune any modern text editor for each file type.
-- Code alignment - SPACES, it should not break on various tab length.
-- Variable names: variable_name.
-- Function names: functionName.
-- Class names: ClassName.
-- Use prefixes to make code more readable:
-	- `i_` - Input variables.
-	- `o_` - Output variables.
-	- `m_` - Class members.
-	- `ms_` - Static class members.
-	- `g_` - External variables.
-	- `v_` - Virtual functions.
-- Do not use "!" as NOT, since it is not noticeable for doing code review. It is much more easy to notice `false == `.
-- Use `false == var` and `NULL == val` instead of `var == false` or `var == NULL`.
-As if you miss one '=' character, it will not be an error, it will be assignment, not comparison.
-- Use `const &` to pass complex types as function parameters to not to copy class instance.
-
-#### Example:
-
-```c
-// Function with long parameters list:
-bool someFunction(std::string &o_status, const std::string &i_param1, const std::string &i_param2,
-	const std::string &i_param3, const std::string &i_param4)
-{
-	...
-
-	if (false == variable_name)
-	{
-		o_status = "error";
-		return false;
-	}
-	return true;
-}
-```
-
-You will notice, that some parts of the code are not following these rules. This
-is mostly because such code has been written before these rules were created or
-changed.
-
-The typical file header and code style for C++ and JS files can automatically be applied with the script 
-[utilities/maintenance/codeStyleCheck.php](https://github.com/CGRU/cgru/blob/master/utilities/maintenance/codeStyleCheck.php) see the file for instructions of setup and usage. 
-
-The file header shall contain as much information as possible about the file, you can find a good example here:
-[afanasy/browser/monitor.js](https://github.com/CGRU/cgru/blob/master/afanasy/browser/monitor.js)
-### Some names:
-**CGRU** - came from CG - Rules. It has two meanings: computer graphics principles and computer graphics is a cool thing.
-
-**Afanasy** - came from a Greek name meaning [immortal](http://en.wikipedia.org/wiki/Afanasy). 
-
-**Rules** - simple came from rules! This project tracker is based on defined rules.
-Mostly project structure rules, where to store sources, references, dailies, outputs.
-As Rules does not have its own database, it walks file-server folders structure.
+## Notes
+* Windows: To integrate a window in the grid (once it is unlocked), use the CTRL key.
+* Sub-Windows: For example, you can access Task windows by double-clicking on a Job.
+* Refresh: The active window has a higher refresh (visible thanks to the circle on the left side of the title bar).
+* Last Update: This time corresponds to that elapsed since the last completed query.
