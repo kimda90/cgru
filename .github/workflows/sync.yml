@@ -14,9 +14,7 @@ jobs:
       - name: Fetch tags instead of objects
         run:  git fetch draco --tags
       - name: Merge Master branches
-        run:  git merge draco/master --allow-unrelated-histories
-      - name: Resolve conflicts favoring DRACO
-        run:  git checkout --theirs -- *
+        run:  git merge draco/master --allow-unrelated-histories -X theirs -m "Merging DRACO"
       - name: Git Auto Commit
         # You may pin to the exact commit or the version.
         # uses: stefanzweifel/git-auto-commit-action@2fde6fc18d3b24c2561ba4b73a8e015e863cef85
