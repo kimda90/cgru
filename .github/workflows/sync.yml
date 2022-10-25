@@ -9,10 +9,10 @@ jobs:
         uses: actions/checkout@master
       - name: Add Arubinu/Draco-CGRU git
         run:  git remote add draco https://github.com/Arubinu/Draco-CGRU.git
-      - name: Merge Master branches
-        run:  git merge draco/master --allow-unrelated-histories
       - name: Fetch tags instead of objects
         run:  git fetch draco --tags
+      - name: Merge Master branches
+        run:  git merge draco/master --allow-unrelated-histories
       - name: Resolve conflicts favoring DRACO
         run:  git checkout --theirs -- *
       - name: Git Auto Commit
