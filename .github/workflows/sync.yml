@@ -1,4 +1,4 @@
-name: Sync Files
+name: Merge Draco
 on:
   workflow_dispatch:
 jobs:
@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
       - name: Setting Git username and email
         uses: fregante/setup-git-user@v1
       - name: Add Arubinu/Draco-CGRU git
@@ -16,6 +18,4 @@ jobs:
       - name: Merge Master branches
         run:  git merge draco/master --allow-unrelated-histories -X theirs -m "Merging DRACO"
       - name: Git Auto Commit
-        # You may pin to the exact commit or the version.
-        # uses: stefanzweifel/git-auto-commit-action@2fde6fc18d3b24c2561ba4b73a8e015e863cef85
         uses: stefanzweifel/git-auto-commit-action@v4.15.2
