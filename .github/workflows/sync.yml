@@ -1,0 +1,21 @@
+name: Merge Draco
+on:
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Setting Git username and email
+        uses: fregante/setup-git-user@v1
+      - name: Add Arubinu/Draco-CGRU git
+        run:  git remote add draco https://github.com/Arubinu/Draco-CGRU.git
+      - name: Fetch tags instead of objects
+        run:  git fetch draco --tags
+      - name: Merge Master branches
+        run:  git merge draco/master --allow-unrelated-histories -X theirs -m "Merging DRACO"
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v4.15.2
